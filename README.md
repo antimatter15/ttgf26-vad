@@ -20,7 +20,7 @@ The demo is a one-tile PDM microphone energy estimator:
 - `ui[1]`: sample enable
 - `uo[7:0]`: smoothed energy output
 
-The top module is `tt_um_gf26b_startup_demo` in [src/project.v](src/project.v). The cocotb test in [test/test.py](test/test.py) covers silence, high-energy biased input, sample-enable hold behavior, and energy decay after quiet windows.
+The top module is `tt_um_antimatter15_pdm_vad` in [src/project.v](src/project.v). The cocotb test in [test/test.py](test/test.py) covers silence, high-energy biased input, sample-enable hold behavior, and energy decay after quiet windows.
 
 The GitHub action will automatically build the ASIC files using [LibreLane](https://www.zerotoasiccourse.com/terminology/librelane/).
 

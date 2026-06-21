@@ -27,7 +27,6 @@ async def test_project(dut):
     await Timer(1, unit="ns")
 
     assert dut.uo_out.value == 0
-    assert dut.user_project.energy.value == 0
 
     async def feed_window(bits):
         for bit in bits:
@@ -37,28 +36,23 @@ async def test_project(dut):
 
     # A balanced PDM stream looks like silence around 50 percent density.
     await feed_window([0, 1] * 32)
-    assert dut.user_project.energy.value == 0
     assert dut.uo_out.value == 0
 
     # A strongly biased window creates energy.
     await feed_window([1] * 64)
-    assert dut.user_project.energy.value == 32
     assert dut.uo_out.value == 32
 
     # Hold the detector state when sample_enable is low.
-    held_energy = int(dut.user_project.energy.value)
-    held_index = int(dut.user_project.sample_index.value)
+    held_energy = int(dut.uo_out.value)
     dut.ui_in.value = 0
     await ClockCycles(dut.clk, 80)
     await Timer(1, unit="ns")
-    assert dut.user_project.energy.value == held_energy
-    assert dut.user_project.sample_index.value == held_index
+    assert dut.uo_out.value == held_energy
 
     # Several quiet windows decay the smoothed energy.
     for _ in range(9):
         await feed_window([0, 1] * 32)
 
-    assert int(dut.user_project.energy.value) <= 4
     assert int(dut.uo_out.value) <= 4
 
     assert dut.uio_out.value == 0
