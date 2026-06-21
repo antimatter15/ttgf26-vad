@@ -1,6 +1,6 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
 
-# GF26b Startup Demo
+# PDM Voice Activity Detector
 
 This is a starter Tiny Tapeout GF180 Verilog project created from the official `TinyTapeout/ttgf-verilog-template` for the current GF26b open shuttle.
 

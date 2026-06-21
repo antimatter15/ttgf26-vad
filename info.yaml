@@ -1,6 +1,6 @@
 # Tiny Tapeout project information
 project:
-  title:        "GF26b Startup Demo"      # Project title
+  title:        "PDM Voice Activity Detector"      # Project title
   author:       "Kevin"      # Your name
   discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "A one-tile PDM microphone energy estimator."      # One line description of what your project does
