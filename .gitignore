@@ -1,6 +1,8 @@
 .DS_Store
 .idea
 .venv
+__pycache__/
+*.pyc
 *.vcd
 *.fst
 *.fst.hier
@@ -14,6 +16,7 @@ test/results.xml
 test/gate_level_netlist.v
 analysis/vad_compare/*.csv
 analysis/vad_compare/*.json
+analysis/vad_compare/*.png
 analysis/vad_compare/*.ogg
 analysis/vad_compare/*.wav
 analysis/vad_compare/ava_subset/

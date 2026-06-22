@@ -14,13 +14,14 @@ To learn more and get started, visit https://tinytapeout.com.
 
 ## Demo Design
 
-The demo is a one-tile PDM microphone energy estimator:
+The demo is a one-tile PDM microphone activity-score estimator with a
+hardware-friendly spectral scanner:
 
 - `ui[0]`: PDM data bit
 - `ui[1]`: sample enable
-- `uo[7:0]`: smoothed energy output
+- `uo[7:0]`: smoothed activity score
 
-The top module is `tt_um_antimatter15_pdm_vad` in [src/project.v](src/project.v). The cocotb test in [test/test.py](test/test.py) covers silence, high-energy biased input, sample-enable hold behavior, and energy decay after quiet windows.
+The top module is `tt_um_antimatter15_pdm_vad` in [src/project.v](src/project.v). The circuit counts 64-bit PDM density windows into roughly 10 ms frames, mixes those density samples against three square-wave spectral probes near 500 Hz, 562.5 Hz, and 1.5 kHz, combines the band response with frame energy and frame-to-frame energy change, and outputs an 8-bit activity score. The cocotb test in [test/test.py](test/test.py) covers silence, high-energy biased frames, sample-enable hold behavior, mixer response, and score decay after quiet frames.
 
 The GitHub action will automatically build the ASIC files using [LibreLane](https://www.zerotoasiccourse.com/terminology/librelane/).
 
