@@ -107,6 +107,6 @@ module tt_um_antimatter15_pdm_vad (
   assign uio_oe  = 0;
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{uio_in, ui_in[7:2], 1'b0};
+  wire _unused = &{uio_in, ui_in[7:2], band_sum[15:14], band_sum[6:0], raw_delta[3:0], 1'b0};
 
 endmodule
